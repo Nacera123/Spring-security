@@ -1,11 +1,9 @@
-package com.abdel.stock.service;
+package org.akov.ws.service;
 
 
-import com.abdel.stock.model.Photo;
-import com.abdel.stock.model.Role;
-import com.abdel.stock.repository.PhotoRepository;
-import com.abdel.stock.repository.RoleRepository;
 import lombok.Data;
+import org.akov.ws.model.Role;
+import org.akov.ws.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

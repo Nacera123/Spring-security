@@ -1,4 +1,4 @@
-package com.abdel.stock.model;
+package org.akov.ws.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,11 +16,20 @@ import java.util.List;
 @Table(name = "user")
 public class User implements UserDetails {
 
+    public User() {
+        this.dateCreation = new Date();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
     private String mdp;
+    private String token;
+
+    //@Column(name="dateCreation", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreation;
     private boolean active; // actif ou pas
 
     @ManyToMany(fetch = FetchType.EAGER)

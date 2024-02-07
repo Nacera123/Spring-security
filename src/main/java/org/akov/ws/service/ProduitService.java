@@ -1,12 +1,11 @@
-package com.abdel.stock.service;
+package org.akov.ws.service;
 
 
-import com.abdel.stock.model.Produit;
-import com.abdel.stock.repository.ProduitRepository;
 import lombok.Data;
+import org.akov.ws.model.Produit;
+import org.akov.ws.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 

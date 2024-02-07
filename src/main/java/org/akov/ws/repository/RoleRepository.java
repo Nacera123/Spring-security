@@ -1,8 +1,7 @@
-package com.abdel.stock.repository;
+package org.akov.ws.repository;
 
 
-import com.abdel.stock.model.Photo;
-import com.abdel.stock.model.Role;
+import org.akov.ws.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

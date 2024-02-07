@@ -1,11 +1,9 @@
-package com.abdel.stock.service;
+package org.akov.ws.service;
 
 
-import com.abdel.stock.model.Photo;
-import com.abdel.stock.model.User;
-import com.abdel.stock.repository.PhotoRepository;
-import com.abdel.stock.repository.UserRepository;
 import lombok.Data;
+import org.akov.ws.model.User;
+import org.akov.ws.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Data
@@ -21,10 +20,26 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    public User add(User user) {
+    public User save(User user) {
         return userRepository.save(user);
     }
 
+    public User findByToken(String token){
+        List<User> users = userRepository.findByToken(token);
+        if (users.size() != 1){
+            return null;
+        }
+        return users.get(0);
+    }
+
+
+    public void saveToken(Integer id, String token){
+        userRepository.updateTokenById(token, id);
+    }
+
+    public boolean isTokenExiste(String token){
+        return userRepository.countByTokenLike(token) > 0;
+    }
 
     /**
      * Récupérer l'utilisateur à partir de son email
